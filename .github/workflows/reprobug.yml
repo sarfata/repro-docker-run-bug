@@ -23,4 +23,3 @@ jobs:
         uses: docker://sarfata/repro-docker-run-bug:latest
         with:
           who-to-greet: "I wish this string would be passed to the docker invocation"
-      - run: echo Notice that it did not print the string that should have been passed as a parameter
