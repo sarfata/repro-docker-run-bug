@@ -1,0 +1,23 @@
+name: repro bug
+on: [push]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: this version of the action invocation works
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: ./.github/actions/helloworld/
+        with:
+          who-to-greet: "Mona the Octocat"
+
+  hello_world_job_broken:
+    runs-on: ubuntu-latest
+    name: this version of the action invocation does not work
+    steps:
+      - name: Hello world action step
+        id: hello
+        uses: docker://sarfata/repro-docker-run-bug:latest
+        with:
+          who-to-greet: "I wish this string would be passed to the docker invocation"
