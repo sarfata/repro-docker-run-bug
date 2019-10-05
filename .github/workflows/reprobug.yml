@@ -4,8 +4,10 @@ on: [push]
 jobs:
   hello_world_job:
     runs-on: ubuntu-latest
-    name: this version of the action invocation works
+    name: works
     steps:
+      - name: Download source
+        uses: actions/checkout@v1
       - name: Hello world action step
         id: hello
         uses: ./.github/actions/helloworld/
@@ -14,7 +16,7 @@ jobs:
 
   hello_world_job_broken:
     runs-on: ubuntu-latest
-    name: this version of the action invocation does not work
+    name: same but broken
     steps:
       - name: Hello world action step
         id: hello
